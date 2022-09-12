@@ -1,0 +1,22 @@
+.btn{
+    height: 32px;
+    width: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 84%;
+    margin:1px 5px;
+    &.btn-edit{
+        background-color: #9bcaff;
+        border: #4c8ff3;
+        &:hover{
+            background-color: #a0b8dc;
+        }
+    }
+    &.btn-delete{
+        background-color: #ff9b9b;
+        border: #f34c4c;
+        &:hover{
+            background-color: #dca0a0;
+        }
+    }
+}

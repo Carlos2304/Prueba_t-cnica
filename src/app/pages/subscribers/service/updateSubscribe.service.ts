@@ -3,11 +3,9 @@ import { TokenInterceptorService } from './../../../shared/services/token.interc
 import { AuthService } from './../../auth/services/auth.service';
 export class UpdateSubscriber{
     updateSubscribers= async(id: number, newDate:{})=> {
-        const t = new TokenInterceptorService(new AuthService);
         try {
           const res = await fetch(`${SERVER_API}/countries/${id}`, {
             method: 'PUT',
-            headers: t.getHeaders(),
             body: JSON.stringify(newDate)
           });
           if (res.status === 200) {

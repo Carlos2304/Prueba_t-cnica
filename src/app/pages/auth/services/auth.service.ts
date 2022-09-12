@@ -1,25 +1,15 @@
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { SERVER_API } from '../../../shared/config/config';
-
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
+  constructor(private http: HttpClient, private router: Router){}
    
-  login = async (user:string, password:string) => {
-    try {
-      const res = await fetch(`${SERVER_API}/account/login`, {
-        method:"POST",
-        headers:{
-          'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `bear jwttoken`,
-        },
-        body: JSON.stringify({UserName:user, Password:password})
-      });
-      if (res.status===200) {
-        return res.json();
-      }
-      return null;
-    } catch (error) {
-      console.log(error);
-    }
+  login(user:any){
+    return this.http.post<any>(`${SERVER_API}/account/login`,user)
   };
   
   loggedIn():boolean {
@@ -30,5 +20,6 @@ export class AuthService {
   }
   signOut(){
     localStorage.removeItem("Token");
+    this.router.navigate(['/signIn']);
   }
 }

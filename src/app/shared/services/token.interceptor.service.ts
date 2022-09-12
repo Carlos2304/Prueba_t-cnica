@@ -1,15 +1,29 @@
+import { Router } from '@angular/router';
+import { catchError, Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { AuthService } from '@pages/auth/services/auth.service';
 
-export class TokenInterceptorService {
-  constructor(private authService: AuthService) {}
+@Injectable({
+  providedIn: 'root',
+})
+export class TokenInterceptorService implements HttpInterceptor {
+  private token:any;
+  constructor(private authService: AuthService, private route: Router) {}
 
-  getHeaders() {
-    let token = this.authService.getToken();
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
-    return headers
+  intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>> {
+       this.token = req.clone({
+        setHeaders: {
+          'Authorization': 'Bearer ' + this.authService.getToken()
+        }
+      });
+    return next.handle(this.token).pipe(
+      catchError((err:HttpErrorResponse)=>{
+        if(err.status === 401){
+          this.route.navigateByUrl('/signIn')
+        }
+        return throwError(() => err)
+      })
+    );
   }
 }

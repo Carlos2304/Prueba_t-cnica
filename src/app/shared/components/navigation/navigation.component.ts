@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class NavigationComponent implements OnInit {
-
+  title: string = 'Patatas Subscribers ToGo'
   constructor(public authService: AuthService, private route:Router) { 
   }
 
@@ -19,5 +19,13 @@ export class NavigationComponent implements OnInit {
   signOut(){
     this.authService.signOut();
     this.route.navigate(['/signIn']);
+  }
+  changeState(n:number) :void{
+    if(n == 1){
+      this.route.navigate(['countries']);
+    }
+    else{
+      this.route.navigate(['subscribers']);
+    }
   }
 }

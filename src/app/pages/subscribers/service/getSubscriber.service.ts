@@ -4,11 +4,9 @@ import { TokenInterceptorService } from './../../../shared/services/token.interc
 export class GetSubscriber{
     
     getSubscribers= async(id:number)=> {
-        const t = new TokenInterceptorService(new AuthService);
         try {
           const res = await fetch(`${SERVER_API}/countries/${id}`, {
             method: 'GET',
-            headers: t.getHeaders()
           });
           if (res.status === 200) {
             return res.json();

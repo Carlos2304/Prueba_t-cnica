@@ -8,11 +8,9 @@ export class GetAllSubscribers {
     
   //Fail to Authorization header
    getAllSubscribers= async()=> {
-    const t = new TokenInterceptorService(new AuthService);
     try {
       const res = await fetch(`${SERVER_API}/countries/`, {
         method: 'GET',
-        headers: t.getHeaders()
       });
       if (res.status === 200) {
         return res.json();

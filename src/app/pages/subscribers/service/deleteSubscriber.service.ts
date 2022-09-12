@@ -4,11 +4,9 @@ import { TokenInterceptorService } from './../../../shared/services/token.interc
 export class DeleteSubscriber{
 
     async deleteSubscribe(id: number){
-        const t = new TokenInterceptorService (new AuthService);
         try {
             const res = await fetch(`${SERVER_API}/subscribers/${id}`,{
                 method: 'PUT',
-                headers: t.getHeaders(),
             })
             if(res.status ===200){
                 console.log(res.json());

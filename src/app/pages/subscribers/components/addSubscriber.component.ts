@@ -21,7 +21,7 @@ export class AddSubscribersComponent implements OnInit {
         this.route.navigate(['subscribers'])
     }
     async addSubscriber(subscriberForm:NgForm){
-    if(subscriberForm.value.Name!='' && (subscriberForm.value.Email!='' || subscriberForm.value.CountryCode!='') && subscriberForm.value.PhoneNumber!=''){
+    if(subscriberForm.value.Name!='' && (subscriberForm.value.Email!='' || subscriberForm.value.CountrieCode!='') && subscriberForm.value.PhoneNumber!=''){
        const res = this.addSubscriberService.createSubscriber(subscriberForm.value)   
     }
     }
