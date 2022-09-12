@@ -14,14 +14,11 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>> {
        this.token = req.clone({
         setHeaders: {
-          'Authorization': 'Bearer ' + this.authService.getToken()
+          'Authorization': 'Bear ' + this.authService.getToken()
         }
       });
     return next.handle(this.token).pipe(
       catchError((err:HttpErrorResponse)=>{
-        if(err.status === 401){
-          this.route.navigateByUrl('/signIn')
-        }
         return throwError(() => err)
       })
     );

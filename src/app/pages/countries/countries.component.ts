@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./countries.component.scss']
 })
 export class countriesComponent implements OnInit {
-  @Input() pagination={
+    pagination={
     criteria:'',
     page:1,
     count:10,

@@ -1,65 +1,91 @@
-  <div *ngIf="[countList] > 0" class="pagination">
-    <button *ngIf="[countList] > [count]-1"
-      (click)="previusPage()"
-      [ngClass]="{'page-link disabled':currentPage==1,'page-link':true}"
-      id="rdb5"
-      [i18n]
-      >
-      Previous
-    </button>
-    <input
-      class="pointers"
-      type="radio"
-      name="page"
-      id="rdb2"
-      [value]="pageInitial"
-      [(ngModel)]="currentPage"
-    />
-    <label [ngClass]="{'page-link select':currentPage===pageInitial, 'page-link':true}" for="rdb2">{{
-        pageInitial
-    }}</label>
+<div *ngIf="[countList] > 0" class="pagination">
+  <button
+    *ngIf="pageMax > 1"
+    (click)="onPreviousPage()"
+    [ngClass]="{ 'page-link disabled': currentPage == 1, 'page-link': true }"
+    id="rdb5"
+    [i18n]
+  >
+    Previous
+  </button>
+  <input
+    class="pointers"
+    type="radio"
+    name="page"
+    id="rdb2"
+    [value]="pageInitial"
+    [(ngModel)]="currentPage"
+  />
+  <label
+    [ngClass]="{
+      'page-link select': currentPage === pageInitial,
+      'page-link': true
+    }"
+    for="rdb2"
+    (click)="changePageNumber(pageInitial)"
+    >{{ pageInitial }}</label
+  >
 
-    <input
-      *ngIf="countList > count*2"
-      class="pointers"
-      type="radio"
-      name="page"
-      id="rdb3"
-      [value]="pageAverage"  
-      [(ngModel)]="currentPage"
-    />
-    <label
-      *ngIf="countList > count*2"
-      [ngClass]="{'page-link select':currentPage===pageAverage, 'page-link':true}"
-      for="rdb3"
-      >{{ pageAverage }}</label
-    >
+  <input
+    *ngIf="pageMax > 1"
+    class="pointers"
+    type="radio"
+    name="page"
+    id="rdb3"
+    [value]="pageAverage"
+    [(ngModel)]="currentPage"
+  />
+  <label
+    *ngIf="pageMax > 1"
+    [ngClass]="{
+      'page-link select': currentPage === pageAverage,
+      'page-link': true
+    }"
+    for="rdb3"
+    (click)="changePageNumber(pageAverage)"
+    >{{ pageAverage }}</label
+  >
 
-    <input
-    *ngIf="countList > count"
-      class="pointers"
-      type="radio"
-      name="page"
-      id="rdb4"
-      [value]="pageFinish"
-      [(ngModel)]="currentPage"
-    />
-    <label
-      *ngIf="countList > count"
-      [ngClass]="{'page-link select':currentPage===pageFinish, 'page-link':true}"
-      for="rdb4"
-      >{{ pageFinish }}</label
-    >
+  <input
+    *ngIf="pageMax > 2"
+    class="pointers"
+    type="radio"
+    name="page"
+    id="rdb4"
+    [value]="pageFinish"
+    [(ngModel)]="currentPage"
+  />
+  <label
+    *ngIf="pageMax > 2"
+    [ngClass]="{
+      'page-link select': currentPage === pageFinish,
+      'page-link': true
+    }"
+    for="rdb4"
+    (click)="changePageNumber(pageFinish)"
+    >{{ pageFinish }}</label
+  >
 
-    <button
-      (click)="nextPage()"
-      *ngIf="countList > count"
-      [ngClass]="'page-link'"
-      id="rdb5"
-    ><span>Next</span></button>
-    <select class="select-page-count page-link" name="pageCount" id="pageCount" [value]="count">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="10">30</option>
-    </select>
-  </div>
+  <button
+    (click)="onNextPage()"
+    *ngIf="pageMax > 1"
+    [ngClass]="{
+      'page-link disabled': currentPage == pageMax,
+      'page-link': true
+    }"
+    id="rdb5"
+  >
+    <span>Next</span>
+  </button>
+  <select
+    class="select-page-count page-link"
+    name="pageCount"
+    id="pageCount"
+    [(ngModel)]="count"
+    (ngModelChange)="changeCount($event)"
+  >
+    <option [ngValue]="10">10</option>
+    <option [ngValue]="20">20</option>
+    <option [ngValue]="30">30</option>
+  </select>
+</div>
