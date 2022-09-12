@@ -1,0 +1,33 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    & .page-link, & .select-page-count {
+        padding: 2px 9px;
+        margin: 2px;
+        box-shadow: 1px 1px 3px #000, -1px -1px 1px var(--g3-color);
+        border-radius: 5px;
+        background-color: var(--g1-color);
+        cursor: pointer;
+        &.page-link:hover{
+            background-color: rgb(65, 157, 255);
+            color: #fff;
+        }
+        &.select-page-count:hover
+        {
+            background-color: #fff;
+            color: var(--bs-pagination-color);
+        }
+        &.select {
+            box-shadow: 1px 1px 3px var(--g3-color), -1px -1px 1px #000;
+            background-color: rgb(20, 108, 202);
+            color: #fff;
+        }
+        &.disabled{
+            background-color: rgb(186, 186, 187);
+            color: #fff;
+        }
+    }
+    & .pointers{
+        display: none;
+    }
+}

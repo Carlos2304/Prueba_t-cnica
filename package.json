@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "front_angular",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,6 +19,9 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@fortawesome/angular-fontawesome": "^0.11.1",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.1",
@@ -39,5 +42,10 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.7.2"
+  },
+  "_moduleAliases": {
+    "@": "src",
+    "@shared": "src/app/shared",
+    "@pages": "src/app/pages"
   }
 }

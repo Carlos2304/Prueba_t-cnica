@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="title-primary">
+        <span>Patatas Subscribers ToGo</span>
+    </div>
+    <div *ngIf="authService.loggedIn()" class="nav-items">
+        <li><a href="">Suscriptores</a></li>
+         <li><a href="">Ciudades</a></li>
+    </div>
+    <div *ngIf="authService.loggedIn();" class="navbar-right">
+        <button (click)="signOut()">SingOut</button>
+    </div>
+</nav>

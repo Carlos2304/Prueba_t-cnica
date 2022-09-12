@@ -1,0 +1,41 @@
+<div class="container p-3">
+  <div>
+    <div>
+      <app-button (click)="changeState()" [titleButton]="'Crear Subscritor'"></app-button>
+    </div>
+  </div>
+  <div></div>
+  <table class="table table-striped p-5 table-responsive">
+    <thead class="">
+      <tr class="col-4">
+        <th>PublicId</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>CountryCode</th>
+        <th>CountryName</th>
+        <th>PhoneCode</th>
+        <th>PhoneNumber</th>
+        <th>JobTitle</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr>
+        <td>1749</td>
+        <td>Jhon</td>
+        <td>jhon@gmail.com</td>
+        <td>Desarrollador</td>
+        <td>Colombia</td>
+        <td>+57</td>
+        <td>300125888</td>
+        <td>Developer</td>
+        <td>
+          <button>Edit</button>
+          <button>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-pagination></app-pagination>
+</div>
+

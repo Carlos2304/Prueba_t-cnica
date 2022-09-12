@@ -2,11 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "src",
     "paths": {
-      "@root":["src/app/*"],
-      "@shared": ["src/shared/*"]
+      "@root":["/src"],
+      "@shared/*": ["/app/shared"],
+      "@pages/*":["app/pages/*"],
     },
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -26,11 +27,5 @@
       "es2020",
       "dom"
     ]
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
   }
 }
