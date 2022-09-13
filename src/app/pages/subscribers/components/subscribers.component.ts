@@ -1,3 +1,5 @@
+import { PaginationModel } from './../model/pagination.model';
+import { SubscriberListModel, ListData } from './../model/subscribersList.model';
 import { PaginationComponent } from './../../../shared/components/pagination/pagination.component';
 import { BtnDeleteComponent } from './../../../shared/components/buttons/table/btn-delete/btn-delete.component';
 import { BtnEditComponent } from 'app/shared/components/buttons/table/btn-edit/btn-edit.component';
@@ -14,7 +16,7 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
   providers: [GetAllSubscribers, ButtonGenericComponent, ButtonSendComponent, BtnEditComponent, BtnDeleteComponent, PaginationComponent]
 })
 export class SubscribersComponent implements OnInit {
-    pagination={
+    pagination:PaginationModel={
     criteria:'',
     page:1,
     count:10,
@@ -22,8 +24,7 @@ export class SubscribersComponent implements OnInit {
    sortType:0
   }
   countList:number=0;
-  data:any;
-  listSubscribers:any;
+  listSubscribers:ListData[]=[];
 
   constructor( private getAllSubscribers: GetAllSubscribers, buttonGenericComponent: ButtonGenericComponent, 
     btnSend: ButtonSendComponent,private route: Router, private btnEdit: BtnEditComponent, btnDelete: BtnDeleteComponent,
@@ -37,10 +38,9 @@ export class SubscribersComponent implements OnInit {
  getAllSubscribersM(){
     this.getAllSubscribers.getAllSubscribers(this.pagination)
     .subscribe({
-      next:(res)=>{
-        this.listSubscribers= res;
-        this.countList=this.listSubscribers.Count;
-        this.data = this.listSubscribers.Data;
+      next:(res:SubscriberListModel)=>{
+        this.listSubscribers= res.Data;
+        this.countList=res.Count;
       },
       error:(err)=>console.log("Faill")
     })

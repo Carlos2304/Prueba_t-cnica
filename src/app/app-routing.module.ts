@@ -7,27 +7,39 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesGuard } from './shared/services/services.guard';
 const routes: Routes = [
-
   {
-    path: 'signIn', component:AuthComponent
+    path: '',
+    component: SubscribersComponent,
+    canActivate: [ServicesGuard],
   },
   {
-    path: 'countries', component:countriesComponent, canActivate: [ServicesGuard]
-  }, 
-  { path: 'subscribers', component: SubscribersComponent, canActivate: [ServicesGuard]},
+    path: 'signIn',
+    component: AuthComponent,
+  },
+  {
+    path: 'countries',
+    component: countriesComponent,
+    canActivate: [ServicesGuard],
+  },
+  {
+    path: 'subscribers',
+    component: SubscribersComponent,
+    canActivate: [ServicesGuard],
+  },
   {
     path: 'subscribers/add',
-    component: AddSubscribersComponent, canActivate: [ServicesGuard]
+    component: AddSubscribersComponent,
+    canActivate: [ServicesGuard],
   },
   {
     path: 'subscribers/update',
     component: UpdateSubscriber,
-    canActivate: [ServicesGuard]
+    canActivate: [ServicesGuard],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

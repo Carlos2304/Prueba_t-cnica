@@ -1,3 +1,6 @@
+import { PaginationModel } from './../model/pagination.model';
+import { SubscriberListModel } from './../model/subscribersList.model';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { store } from './../../../shared/config/Storage/index';
 import { SERVER_API, Store } from '../../../shared/config/config';
@@ -11,10 +14,9 @@ import { Injectable } from '@angular/core';
 })
 export class GetAllSubscribers {
   constructor(private http:HttpClient){}
-    
-  //Fail to Authorization header
-   getAllSubscribers(pagination:any){
-    return this.http.get(`${SERVER_API}/subscribers/`, {
+  
+   getAllSubscribers(pagination:PaginationModel):Observable<SubscriberListModel>{
+    return this.http.get<SubscriberListModel>(`${SERVER_API}/subscribers/`, {
       params: new HttpParams()
         .set('criteria', pagination.criteria)
         .set('page', pagination.page)
@@ -22,8 +24,5 @@ export class GetAllSubscribers {
         .set('sortOrder', pagination.sortOrder)
         .set('sortType', pagination.sortType)
     })
-  }
-  GetAllSubscribersLocal(){
-    return store.getters.getDataLocal();
   }
 }

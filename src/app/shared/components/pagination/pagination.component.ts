@@ -24,8 +24,6 @@ export class PaginationComponent implements OnInit {
   pageFinish: number = 3; //Shows the finish number of pagination, number maximum of pages
   pageMax: number = 0;
 
-
-
   ngOnChanges(changes: SimpleChanges){
       this.maxPage();
   }
