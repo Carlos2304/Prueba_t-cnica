@@ -38,7 +38,9 @@ export class SubscribersService {
     return this.http.delete(`${SERVER_API}/subscribers/${id}`);
   }
 
-  updateSubscribers = async (id: number, newDate: {}) => {};
+  updateSubscribers = async (id: number, newDate:SubscriberModel) => {
+    return this.http.put(`${SERVER_API}/subscribers/${id}`,newDate);
+  };
 
   getFormGroup():FormGroup {
     let formAddSubscriber = new FormGroup({
