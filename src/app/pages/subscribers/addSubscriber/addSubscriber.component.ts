@@ -1,3 +1,4 @@
+import { SubscriberModelMult } from './../../../model/subscriber';
 import { FormArray, FormControl, FormGroup, NgForm, Validators  } from '@angular/forms';
 import { SubscribersService } from 'app/services/susbscribers/subscribers.service'; 
 import { Component } from '@angular/core';
@@ -10,13 +11,10 @@ import { SubscriberModel } from '../../../model/subscriber';
   styleUrls: ['./addSuscriber.scss', '../../../app.component.scss'],
 })
 export class AddSubscribersComponent {
-
-  formSubscribers:FormGroup = this.subscriberService.getFormGroup()
-
-  
+  subscriberForm:FormGroup = this.subscriberService.getFormGroup()
   formSubscribersGroup = new FormGroup({
-    Subscribers: new FormArray( [
-      this.formSubscribers
+    Subscribers: new FormArray([
+      this.subscriberForm
     ])
   });
   
@@ -24,23 +22,31 @@ export class AddSubscribersComponent {
     private route: Router,
     private subscriberService: SubscribersService
   ) {
-    console.log(this.formSubscribersGroup)
   }
 
   changeState(): void {
     this.route.navigate(['subscribers']);
   }
   addSubscriber() {
-        const newData = this.formSubscribers.getRawValue()
-        // this.subscriberService.createSubscriber(newData)
-        // .subscribe({
-        //   next: (res)=>console.log(res),
-        //   error: (err)=>console.log(err),
-        // })
+        const newData:SubscriberModelMult = this.formSubscribersGroup.getRawValue()
+        this.subscriberService.createSubscriber(newData)
+        .subscribe({
+          next: (res)=>console.log(res),
+          error: (err)=>console.log(err),
+        })
   }
 
-  getEmailControl():FormControl {
-    return this.formSubscribers.get('Email') as FormControl;
-  }
+  get Subscribers(){
+    return this.formSubscribersGroup.controls.Subscribers}
 
+    addSubscribers(){
+    const subscriberForm:FormGroup = this.subscriberService.getFormGroup()
+    this.Subscribers.push(subscriberForm)
+  }
+  deleteSubscriber(susIndex: number) {
+    if(this.Subscribers.length>1){
+      this.Subscribers.removeAt(susIndex)
+    }
+    
+  }
 }

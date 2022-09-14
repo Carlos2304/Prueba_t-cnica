@@ -1,3 +1,4 @@
+import { SubscriberModelMult } from './../../model/subscriber';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SubscriberModel } from '../../model/subscriber';
 import { SERVER_API } from 'app/shared/config/config';
@@ -30,7 +31,7 @@ export class SubscribersService {
     return this.http.get<SubscriberModel>(`${SERVER_API}/subscribers/${id}`);
   }
 
-  createSubscriber(subscriber: SubscriberModel) {
+  createSubscriber(subscriber:SubscriberModelMult) {
     return this.http.post(`${SERVER_API}/subscribers`,subscriber);
   }
   deleteSubscribe(id: number) {

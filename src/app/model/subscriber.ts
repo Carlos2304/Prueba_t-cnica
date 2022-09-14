@@ -24,14 +24,6 @@ export interface SubscriberModel {
   ConnectionState: number;
   Id: number;
 }
-export interface SubscriberModelMin {
-  Name: string;
-  Email: string;
-  Area?: string;
-  CountryCode: string;
-  CountryName?: string;
-  PhoneNumber: string;
-  PhoneCode?: string;
-  JobTitle?: string;
-  Topics?: any[];
+export interface SubscriberModelMult {
+    Subscribers:any[]
 }
