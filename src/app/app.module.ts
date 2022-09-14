@@ -1,3 +1,5 @@
+import { FormControl, FormGroup } from '@angular/forms';
+import { AddSubscribersComponent } from './pages/subscribers/addSubscriber/addSubscriber.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,8 +14,7 @@ import { BtnEditComponent } from './shared/components/buttons/btn-edit/btn-edit.
 import { AppComponent } from './app.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { countriesComponent } from './pages/countries/countries.component';
-import { AddSubscribersComponent } from './pages/subscribers/components/addSubscriber.component';
-import { SubscribersComponent } from './pages/subscribers/components/subscribers.component';
+import { SubscribersComponent } from './pages/subscribers/subscribers.component';
 import { BtnDeleteComponent } from './shared/components/buttons/btn-delete/btn-delete.component'; 
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
@@ -49,3 +50,9 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
 })
 export class AppModule { 
 }
+
+export type ControlsOf<T extends Record<string, any>> = {
+  [K in keyof T]: T[K] extends Record<any, any>
+  ? FormGroup<ControlsOf<T[K]>>
+  : FormControl<T[K]>;
+};

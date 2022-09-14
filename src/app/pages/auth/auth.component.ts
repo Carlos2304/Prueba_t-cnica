@@ -1,12 +1,12 @@
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Component } from '@angular/core';
 import { AuthCredentials } from './auth.model';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./style/auth.component.scss'],
+  styleUrls: ['./auth.component.scss', '../../app.component.scss'],
 })
 export class AuthComponent{ 
 
@@ -32,8 +32,4 @@ export class AuthComponent{
 
   }
 }
-export type ControlsOf<T extends Record<string, any>> = {
-  [K in keyof T]: T[K] extends Record<any, any>
-  ? FormGroup<ControlsOf<T[K]>>
-  : FormControl<T[K]>;
-};
+

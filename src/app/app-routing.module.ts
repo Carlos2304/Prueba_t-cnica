@@ -1,6 +1,5 @@
-import { SubscribersComponent } from './pages/subscribers/components/subscribers.component';
-import { UpdateSubscriber } from './pages/subscribers/service/updateSubscribe.service';
-import { AddSubscribersComponent } from './pages/subscribers/components/addSubscriber.component';
+import { SubscribersComponent } from './pages/subscribers/subscribers.component'; 
+import { AddSubscribersComponent } from './pages/subscribers/addSubscriber/addSubscriber.component';
 import { countriesComponent } from './pages/countries/countries.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { NgModule } from '@angular/core';
@@ -33,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'subscribers/update',
-    component: UpdateSubscriber,
+    component: AddSubscribersComponent,
     canActivate: [ServicesGuard],
   },
 ];

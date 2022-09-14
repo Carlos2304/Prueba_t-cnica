@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SERVER_API } from './../../../shared/config/config';
+import { SERVER_API } from 'app/shared/config/config'; 
 import { Injectable } from '@angular/core';
 
 @Injectable({

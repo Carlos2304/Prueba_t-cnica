@@ -1,0 +1,77 @@
+h3 {
+    color: #3160a8;
+    @media (max-width: 525px) {
+        margin-top: 5px;
+    }
+}
+.container {
+    padding: 5px;
+    margin-bottom: 5px;
+    overflow-y: auto;
+    width: 100%;
+    position: relative;
+    height: 38vw;
+    bottom: 0;
+    background-color: #faf9f9;
+    border-top: 3px solid #cbcbcb;
+    border-bottom: 3px solid #cbcbcb;
+    border-radius: 8px;
+    @media (min-width: 768px) {
+        max-width: 100%;
+    }
+    @media (max-width: 525px) {
+        top: 85px;
+        overflow: auto;
+        padding: 15px 0;
+        align-items: flex-start;
+    }
+    & .wrapper-formsArray {
+        width: 100%;
+        margin-bottom: 7px;
+        padding: 7px 0;
+        border-bottom: 4px solid #ced4da;
+        & .contain-arrayForm {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & .form-ctl {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: center;
+                width: 75%;
+                min-width: 200px;
+                border: 1px solid #98b6e2;
+                border-radius: 15px;
+                @media (max-width: 525px) {
+                    margin-top: 30px;
+                }
+                & .form-group {
+                    width: 95%;
+                    padding: 5px;
+                    border-bottom: 2px solid #98b6e2;
+                    margin: 5px;
+                    & label {
+                        min-width: 155px;
+                        width: 30%;
+                    }
+                    & .input-type {
+                        width: 55%;
+                        min-width: 155px;
+                        border: none;
+                        border-bottom: 2px solid #98b6e2;
+                        border-radius: 8px;
+
+                        &:hover {
+                            border-bottom: 2px solid #3160a8;
+                        }
+                    }
+                }
+            }
+            & .btn {
+                margin-left: 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<h3>Registrar subscritores</h3>
+<div class="container data-modal" >
+  <div class="wrapper-formsArray" [formGroup]="formSubscribersGroup" (ngSubmit)="addSubscriber()">
+    <div class="contain-arrayForm" *ngFor="sus of formSubscribersGroup.controls.Subscribers">
+      <div class="form-ctl" [formGroup]="sus.formSubscribers" >
+        <div class="form-group">
+          <label for="nameSubs" >Nombre <span>*</span></label>
+          <input class="input-type" type="text" name="Name" id="nameSubs" formControlName="Name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Correo <span>*</span></label>
+          <input  class="input-type" type="email" formControlName="Email" name="Email" id="emailSubs"/>
+        </div>
+        <div class="form-group">
+          <label for="">Código del Pais <span>*</span></label>
+          <input  class="input-type" type="text" name="CountryCode" id="CodeCountrie" placeholder formControlName="CountryCode"/>
+        </div>
+        <div class="form-group">
+          <label for="">Pais</label>
+          <input  class="input-type" type="text" name="CountryName" id="countrie" placeholder formControlName="CountryName"/>
+        </div>
+        <div class="form-group">
+          <label for="">Código teléfono </label>
+          <input  class="input-type" type="text" name="PhoneCode" id="codePhone" placeholder formControlName="PhoneCode"/>
+        </div>
+        <div class="form-group">
+          <label for="">Teléfono <span>*</span></label>
+          <input  class="input-type" type="text" name="PhoneNumber" formControlName="PhoneNumber" />
+        </div>
+        <div class="form-group">
+          <label for="">Ocupación</label>
+        <input  class="input-type" type="text" name="JobTitle" id="jobTitle" placeholder formControlName="JobTitle"/>
+        </div>
+       <div class="form-group">
+        <label for="">Área</label>
+        <input  class="input-type" type="text" name="Area" id="area" placeholder formControlName="Area"/>
+       </div>
+        <div class="form-group">
+          <label for="">Temas</label>
+        <input class="input-type" type="text" name="Topics" id="topics"  formControlName="Topics"/>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-outline-danger btn-blocking">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-group-center">
+  <button class="btn btn-primary" type="submit" [disabled]="!formSubscribers.valid">Crear</button>
+  <button class="btn btn-primary" type="button"  (click)="changeState()">Cancelar</button>
+</div>

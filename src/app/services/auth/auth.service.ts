@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SERVER_API } from '../../../shared/config/config';
-import { AuthCredentials } from '../auth.model';
+import { SERVER_API } from '../../shared/config/config';
+import { AuthCredentials } from '../../pages/auth/auth.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,8 +25,8 @@ export class AuthService {
   }
   setToken(token:string){
     if(token!=''){
-      localStorage.setItem("token", token)
-      this.router.navigate(['/subscribers']);
+      localStorage.setItem("Token", token)
+      this.router.navigate(['subscribers']);
     }
   }
 }

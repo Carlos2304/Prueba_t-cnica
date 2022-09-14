@@ -1,0 +1,10 @@
+.ng-touched.ng-invalid:is(input, textarea){
+    border-bottom: 2px solid #ff0000 !important;
+}
+.ng-dirty.ng-invalid:is(input, textarea){
+    border-bottom: 2px solid #ff0000 !important;
+
+}
+.ng-dirty.ng-pending:is(input, textarea){
+    border-bottom: 2px solid #0066ff !important;
+}

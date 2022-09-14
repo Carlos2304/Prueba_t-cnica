@@ -1,4 +1,4 @@
-import { CountrieServiceService } from './services/countries.service';
+import { CountrieServiceService } from 'app/services/countries/countries.service'; 
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

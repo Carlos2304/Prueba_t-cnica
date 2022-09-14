@@ -1,4 +1,4 @@
-export interface ListData {
+export interface SubscriberModel {
   SystemId?: any;
   Area: string;
   PublicId: number;
@@ -24,8 +24,14 @@ export interface ListData {
   ConnectionState: number;
   Id: number;
 }
-
-export interface SubscriberListModel {
-  Count: number;
-  Data: ListData[];
+export interface SubscriberModelMin {
+  Name: string;
+  Email: string;
+  Area?: string;
+  CountryCode: string;
+  CountryName?: string;
+  PhoneNumber: string;
+  PhoneCode?: string;
+  JobTitle?: string;
+  Topics?: any[];
 }
