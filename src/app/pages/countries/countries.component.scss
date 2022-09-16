@@ -1,0 +1,19 @@
+.tr-head {
+    text-align: center;
+    border-left: 2px solid rgb(233, 233, 233);
+    border-right: 2px solid rgb(233, 233, 233);
+    cursor: pointer;
+    &.sortSelect-orderByA {
+        background-image: url("../../../assets/icons/down.png");
+    }
+    &.sortSelect-orderByD {
+        background-image: url("../../../assets/icons/up.png");
+    }
+    &.sortSelect-orderByA,
+    &.sortSelect-orderByD {
+        background-color: rgb(233, 233, 233);
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: 20px;
+    }
+}

@@ -17,15 +17,17 @@ h3 {
     border-bottom: 3px solid #cbcbcb;
     border-radius: 8px;
     min-height: 85%;
-    max-height: 32vw;
+    max-height: 35vw;
     @media (min-width: 768px) {
         max-width: 100%;
     }
     @media (max-width: 525px) {
-        top: 85px;
+        top: 0px;
         overflow: auto;
         padding: 15px 0;
         align-items: flex-start;
+        height: auto;
+        max-height: 85rem;
     }
     & .wrapper-formsArray {
         width: 100%;
@@ -57,7 +59,8 @@ h3 {
                     border-radius: 15px;
                     @media (max-width: 525px) {
                         margin-top: 30px;
-                    }
+                        width: 92%;
+                    }    
                     & .form-group {
                         width: 95%;
                         padding: 5px;
@@ -72,12 +75,13 @@ h3 {
                             border: none;
                             border-bottom: 2px solid #98b6e2;
                             border-radius: 8px;
-
+                    
                             &:hover {
                                 border-bottom: 2px solid #3160a8;
                             }
                         }
                     }
+                                
                 }
             }
 
@@ -92,12 +96,14 @@ h3 {
     margin: 10px;
     & button{
         margin:5px;
+        padding-bottom: 7px;
+        padding-top: 3px;
     }
 }
 .form-group-center-header button{
     border-radius: 50%;
-    background-color: #d33d;
+    background-color: rgb(14 173 218);
     &:hover{
-        background-color: rgba(137, 17, 17, 0.867);
+        background-color: rgb(11, 135, 169);
     }
 }

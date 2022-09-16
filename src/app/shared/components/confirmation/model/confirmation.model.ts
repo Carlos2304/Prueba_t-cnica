@@ -1,5 +1,6 @@
-export interface ConfirmationModel {
-  title: string;
-  dualOptions: boolean;
-  message: string;
+export const enum typeMessage {
+  deleted = 'Regitro eliminado',
+  saved = 'Registro almacenado',
+  updated = 'Registro actualizado',
+  delete = '¿Desea eliminar este registro?',
 }

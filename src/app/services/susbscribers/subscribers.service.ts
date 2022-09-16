@@ -28,18 +28,18 @@ export class SubscribersService {
   }
 
   getSubscribers(id: number): Observable<SubscriberModel> {
-    return this.http.get<SubscriberModel>(`${SERVER_API}/subscribers/${id}`);
+    return this.http.get<SubscriberModel>(`${SERVER_API}/subscribers/${id}`); //no retorna el pais, ni el telefono
   }
 
   createSubscriber(subscriber:SubscriberModelMult) {
     return this.http.post(`${SERVER_API}/subscribers`,subscriber);
   }
-  deleteSubscribe(id: number) {
+  deleteSubscribe(id: number): Observable<any> {
     return this.http.delete(`${SERVER_API}/subscribers/${id}`);
   }
 
-  updateSubscribers = async (id: number, newDate:SubscriberModel) => {
-    return this.http.put(`${SERVER_API}/subscribers/${id}`,newDate);
+  updateSubscribers(newDate:SubscriberModel): Observable<any> {
+    return this.http.put(`${SERVER_API}/subscribers/${newDate.Id}`,newDate);
   };
 
   getFormGroup():FormGroup {
@@ -47,6 +47,7 @@ export class SubscribersService {
       SystemId: new FormControl('', { nonNullable: true }),
       PublicId: new FormControl(0, { nonNullable: true }),
       EndpointsCount: new FormControl(0, { nonNullable: true }),
+      LastActivity: new FormControl('', { nonNullable: true }),
       LastActivityUtc: new FormControl('', { nonNullable: true }),
       LastActivityString: new FormControl('', { nonNullable: true }),
       SubscriptionDate: new FormControl('', { nonNullable: true }),
@@ -83,4 +84,4 @@ export class SubscribersService {
     });
     return formAddSubscriber;
   }
-}
+  }

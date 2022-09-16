@@ -1,0 +1,9 @@
+<label for="Filter">Filtro</label>
+<input
+  type="text"
+  name="Filter"
+  id="filterSubs"
+  [formControl]="criteria"
+  (click)="filterCriteria()"
+/>
+<button>Buscar</button>

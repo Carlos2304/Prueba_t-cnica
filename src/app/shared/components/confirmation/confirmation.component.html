@@ -1,0 +1,14 @@
+<div class="overflow-modal" *ngIf="showModal">
+    <div class="wrapper-modal">
+        <div class="header-modal">
+            <h6><span>{{title}}</span></h6>
+        </div>
+        <div class="message-modal">
+            <p>{{message}}</p>
+        </div>
+        <div class="footer-modal">
+            <button class="btn btn-primary" (click)="getOption(true)">{{btnAfirmative}}</button>
+            <button *ngIf="this.btnAfirmative=='Si'" class="btn btn-primary" (click)="getOption(false)">No</button>
+        </div>
+    </div>
+</div>

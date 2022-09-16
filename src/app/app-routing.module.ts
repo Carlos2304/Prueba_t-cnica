@@ -30,11 +30,6 @@ const routes: Routes = [
     component: AddSubscribersComponent,
     canActivate: [ServicesGuard],
   },
-  {
-    path: 'subscribers/update',
-    component: AddSubscribersComponent,
-    canActivate: [ServicesGuard],
-  },
 ];
 
 @NgModule({

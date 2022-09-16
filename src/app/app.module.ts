@@ -1,3 +1,4 @@
+import { ConfirmationComponent } from '@app/shared/components/confirmation/confirmation.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AddSubscribersComponent } from './pages/subscribers/addSubscriber/addSubscriber.component';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,8 @@ import { SubscribersComponent } from './pages/subscribers/subscribers.component'
 import { BtnDeleteComponent } from './shared/components/buttons/btn-delete/btn-delete.component'; 
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
+import { FormSubscriberComponent } from './pages/subscribers/form-subscriber/form-subscriber.component';
+import { FilterComponent } from './shared/filter/filter.component'; 
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
     AddSubscribersComponent,
     SubscribersComponent,
     BtnEditComponent,
-    BtnDeleteComponent
+    BtnDeleteComponent,
+    ConfirmationComponent,
+    FormSubscriberComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,7 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,6 @@
-<h3>Registrar subscritores</h3> 
-<div class="form-group-center-header">
-  <button type="button" class="btn btn-secondary" (click)="addSubscribers()">+</button>
-</div>
+<modal-confirmation></modal-confirmation>
+<h3 class="form-group-center-header">{{title}}
+  <button *ngIf="!isUpdate" type="button" class="btn btn-secondary" (click)="addSubscribers()">+</button></h3> 
 <div class="container data-modal" >
   <div class class="wrapper-formsArray" [formGroup]="formSubscribersGroup">
     <div class="contain-arrayForm"  formArrayName="Subscribers">

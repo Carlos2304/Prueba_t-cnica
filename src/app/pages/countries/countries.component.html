@@ -1,24 +1,71 @@
 <div class="container p-3">
-    <div></div>
+  <div class="wrapper-filter">
+    <app-filter (getFilter)="filterCriteria($event)"></app-filter>
+  </div>
+  <div class="wrapper-table">
     <table class="table table-striped p-5 table-responsive">
       <thead class="">
         <tr class="col-4">
-          <th>Código</th>
-          <th>Código3</th>
-          <th>Nombre</th>
-          <th>Código teléfono </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA':
+                pagination.sortOrder == 'Code' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD':
+                pagination.sortOrder == 'Code' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Code')"
+          >
+            Código
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA':
+                pagination.sortOrder == 'Code3' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD':
+                pagination.sortOrder == 'Code3' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Code3')"
+          >
+            Código3
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA':
+                pagination.sortOrder == 'Name' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD':
+                pagination.sortOrder == 'Name' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Name')"
+          >
+            Nombre
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA':
+                pagination.sortOrder == 'PhoneCode' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD':
+                pagination.sortOrder == 'PhoneCode' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('PhoneCode')"
+          >
+            Código teléfono
+          </th>
         </tr>
       </thead>
-      <tbody >
+      <tbody>
         <tr *ngFor="let countrie of listCountries">
-          <td>{{countrie.Code}}</td>
-          <td>{{countrie.Code3}}</td>
-          <td>{{countrie.Name}}</td>
-          <td>{{countrie.PhoneCode}}</td>
+          <td>{{ countrie.Code }}</td>
+          <td>{{ countrie.Code3 }}</td>
+          <td>{{ countrie.Name }}</td>
+          <td>{{ countrie.PhoneCode }}</td>
         </tr>
       </tbody>
     </table>
-    <!-- <app-pagination></app-pagination> -->
   </div>
-  
-  
+  <app-pagination [countList]="countList" (goTo)="newPage($event)">
+  </app-pagination>
+</div>

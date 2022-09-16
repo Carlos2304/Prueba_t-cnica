@@ -7,6 +7,6 @@
          <button class="btn btn-nav" (click)="changeState(1)">Paises</button>
     </div>
     <div  *ngIf="authService.loggedIn();" class="navbar-right">
-        <button (click)="signOut()">SingOut</button>
+        <button class="btn btn-secondary" (click)="signOut()">Salir</button>
     </div>
 </nav>

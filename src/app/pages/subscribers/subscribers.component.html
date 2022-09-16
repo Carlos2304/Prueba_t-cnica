@@ -1,40 +1,99 @@
+<modal-confirmation></modal-confirmation>
+<form-subscriber></form-subscriber>
 <div class="container p-3">
-    <div>
-      <button class="btn btn-primary "(click)="changeState()">Crear Subscritor</button>
-    </div>
+  <div class="wrapper-filter">
+    <button class="btn btn-primary" (click)="changeState()">
+      Crear Subscritor
+    </button>
+    <app-filter (getFilter)="filterCriteria($event)"></app-filter>
+  </div>
   <div class="wrapper-table">
-  <table class="table table-striped p-5 table-responsive">
-    <thead class="">
-      <tr class="col-4">
-        <th>PublicId</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>CountrieCode</th>
-        <th>CountrieName</th>
-        <th>PhoneCode</th>
-        <th>PhoneNumber</th>
-        <th>JobTitle</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody >
-      <tr *ngFor="let susbriber of listSubscribers">
-        <td>{{susbriber.PublicId}}</td>
-        <td>{{susbriber.Name}}</td>
-        <td>{{susbriber.Email}}</td>
-        <td>{{susbriber.CountrieCode}}</td>
-        <td>{{susbriber.CountrieName}}</td>
-        <td>{{susbriber.PhoneCode}}</td>
-        <td>{{susbriber.PhoneNumber}}</td>
-        <td>{{susbriber.JobTitle}}</td>
-        <td>
-          <btn-edit (click)="edit(susbriber.id)"></btn-edit>
-          <btn-delete></btn-delete>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table table-striped p-5 table-responsive">
+      <thead>
+        <tr class="col-4">
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA': pagination.sortOrder == 'PublicId' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD':pagination.sortOrder == 'PublicId'&& pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('PublicId')"
+          >
+            Id
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA': pagination.sortOrder == 'Name' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD': pagination.sortOrder == 'Name' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Name')"
+          >
+            Nombre
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA': pagination.sortOrder == 'Email' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD': pagination.sortOrder == 'Email' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Email')"
+          >
+            Correo
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA': pagination.sortOrder == 'Pais' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD': pagination.sortOrder == 'Pais' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Pais')"
+          >
+            Pais
+          </th>
+          <th class="tr-head">Numero de Telefono</th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA': pagination.sortOrder == 'Area' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD': pagination.sortOrder == 'Area' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('Area')"
+          >
+            Area
+          </th>
+          <th
+            [ngClass]="{
+              'tr-head sortSelect-orderByA': pagination.sortOrder == 'JobTitle' && pagination.sortType == 0,
+              'tr-head sortSelect-orderByD': pagination.sortOrder == 'JobTitle' && pagination.sortType == 1,
+              'tr-head': true
+            }"
+            (click)="filter('JobTitle')"
+          >
+            Ocupación
+          </th>
+          <th class="tr-head"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let susbriber of listSubscribers">
+          <td>{{ susbriber.PublicId }}</td>
+          <td>{{ susbriber.Name }}</td>
+          <td>{{ susbriber.Email }}</td>
+          <td>{{ susbriber.CountryName }}</td>
+          <td>{{ susbriber.PhoneNumber }}</td>
+          <td>{{ susbriber.Area }}</td>
+          <td>{{ susbriber.JobTitle }}</td>
+          <td>
+            <btn-edit (click)="edit(susbriber.Id)"></btn-edit>
+            <btn-delete (click)="delete(susbriber.Id)"></btn-delete>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination
+    [countList]="countList"
+    (goTo)="newPage($event)"
+  ></app-pagination>
 </div>
-  <app-pagination [countList]="countList" (goTo)="newPage($event)"></app-pagination>
-</div>
-
